@@ -4,11 +4,10 @@
 char* A[10] = { "Zero","One", "Two", "Three", "Four","Five","Six","Seven","Eight","Nine"};
 char* B[10] = {"Ten", "Eleven", "Twelve", "Thirteen", "Forteen", "Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};
 char* C[10] = {" "," ","Twenty","Thirty","Forty","Fifty", "Sixty","Seventy","Eighty","Ninety" };
-char* D[22] = {" ","Hundred", "Thousand","Million","Billion","Trillion","Quadrillion","Quintillion","Sextillion","Septillion","Octillion","Nonillion","Decillion","Undecillion","Duodecillion","Tredecillion","Quattuordecillion","Quindecillion","Sexdecillion","Septendecillion","Octodecillion","Novemdecillion" };
+char* D[22] = {" ","Hundred","Thousand","Million","Billion","Trillion","Quadrillion","Quintillion","Sextillion","Septillion","Octillion","Nonillion","Decillion","Undecillion","Duodecillion","Tredecillion","Quattuordecillion","Quindecillion","Sexdecillion","Septendecillion","Octodecillion","Novemdecillion" };
 
 void no_to_words(int* triples)
 {
-	int i;
 	if(triples[0]==0 && triples[1]==0 && triples[2]==0){}
 	else if(triples[0]==0 && triples[1]==0 && triples[2]!=0)
 	{
@@ -61,7 +60,7 @@ void no_to_words(int* triples)
 		printf("%s ",D[1]);
 		if(triples[1]==1)
 		{
-			printf("%s ",B[triples[1]]);
+			printf("%s ",B[triples[2]]);
 		}
 		else
 		{
@@ -81,12 +80,11 @@ void form_triplet(char* str,int n)
         triples[1]=0;
         triples[2]=str[0]-48;
         no_to_words(triples);
-        if(count>=2)
+        if(count>=2 && (triples[0]!=0 || triples[1]!=0 || triples[2]!=0))
         {
         	printf("%s ",D[count]);
-        	count--;
         }
-        
+        count--;
         for(i=1;i<n;i=i+3)
         {
             int k=0;
@@ -96,11 +94,11 @@ void form_triplet(char* str,int n)
                 k++;
             }
         	no_to_words(triples);
-        	if(count>=2)
+        	if(count>=2 && (triples[0]!=0 || triples[1]!=0 || triples[2]!=0))
         	{
         		printf("%s ",D[count]);
-        		count--;
-        	}
+        		
+        	}count--;
         }
     }
     else if(n%3==2)
@@ -110,11 +108,10 @@ void form_triplet(char* str,int n)
         triples[1]=str[0]-48;
         triples[2]=str[1]-48;
         no_to_words(triples);
-        if(count>=2)
+        if(count>=2 && (triples[0]!=0 || triples[1]!=0 || triples[2]!=0))
         {
         	printf("%s ",D[count]);
-        	count--;
-        }
+        }count--;
         for(i=2;i<n;i=i+3)
         {
             int k=0;
@@ -124,11 +121,10 @@ void form_triplet(char* str,int n)
                 k++; 
             }
         	no_to_words(triples);
-        	if(count>=2)
+        	if(count>=2 && (triples[0]!=0 || triples[1]!=0 || triples[2]!=0))
         	{
         		printf("%s ",D[count]);
-        		count--;
-        	}
+        	}count--;
         }
     }
     else
@@ -143,11 +139,10 @@ void form_triplet(char* str,int n)
             	k++;
         	}
         	no_to_words(triples);
-        	if(count>=2)
+        	if(count>=2 && (triples[0]!=0 || triples[1]!=0 || triples[2]!=0))
         	{
         		printf("%s ",D[count]);
-        		count--;
-        	}
+        	}count--;
         }
     }
 }
